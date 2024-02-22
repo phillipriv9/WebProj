@@ -5,6 +5,8 @@ navbar:
   left:
   - text: Home
     href: index.html
+  - text: Home
+    href: first-analysis.html
   - text: About
     href: about.html
   - text: License
