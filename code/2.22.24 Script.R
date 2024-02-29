@@ -43,7 +43,7 @@ wflow_status()
 
 #Publishing new stuff
 wflow_publish(c("analysis/index.Rmd", "analysis/first-analysis.Rmd"),
-              "Add my first analysis")
+              "Update Ananlysis")
 
 #Pushing the files
 wflow_git_push()
