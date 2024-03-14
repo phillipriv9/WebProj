@@ -336,7 +336,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="first-analysis.html">Home</a>
+  <a href="first-analysis.html">First ANalysis</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -372,7 +372,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -383,8 +383,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,9 +397,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>WebProj/</code> <span
@@ -422,18 +422,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -524,15 +527,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtreeba215560d2f56b9ec06224e3427807939c01323ftargetblankba21556a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree3c409db7e7f8e9c5290fae982ae994d01aa4567etargetblank3c409dba">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/phillipriv9/WebProj/tree/ba215560d2f56b9ec06224e3427807939c01323f" target="_blank">ba21556</a>
+<a href="https://github.com/phillipriv9/WebProj/tree/3c409db7e7f8e9c5290fae982ae994d01aa4567e" target="_blank">3c409db</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtreeba215560d2f56b9ec06224e3427807939c01323ftargetblankba21556a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree3c409db7e7f8e9c5290fae982ae994d01aa4567etargetblank3c409dba"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +545,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/phillipriv9/WebProj/tree/ba215560d2f56b9ec06224e3427807939c01323f" target="_blank">ba21556</a>.
+<a href="https://github.com/phillipriv9/WebProj/tree/3c409db7e7f8e9c5290fae982ae994d01aa4567e" target="_blank">3c409db</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -560,6 +563,10 @@ Ignored files:
     Ignored:    .RData
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/first-analysis.Rmd
 
 </code></pre>
 <p>
@@ -605,6 +612,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/phillipriv9/WebProj/3c409db7e7f8e9c5290fae982ae994d01aa4567e/docs/first-analysis.html" target="_blank">3c409db</a>
+</td>
+<td>
+Phillipriv9
+</td>
+<td>
+2024-02-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -808,23 +832,22 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] ggplot2_3.4.4   tidyr_1.3.1     dplyr_1.1.4     workflowr_1.7.1
+[1] ggplot2_3.4.4 tidyr_1.3.1   dplyr_1.1.4  
 
 loaded via a namespace (and not attached):
  [1] gtable_0.3.4      jsonlite_1.8.8    highr_0.10        compiler_4.3.2   
  [5] promises_1.2.1    tidyselect_1.2.0  Rcpp_1.0.12       stringr_1.5.1    
- [9] git2r_0.33.0      callr_3.7.3       later_1.3.2       jquerylib_0.1.4  
-[13] scales_1.3.0      yaml_2.3.8        fastmap_1.1.1     R6_2.5.1         
-[17] generics_0.1.3    knitr_1.45        tibble_3.2.1      munsell_0.5.0    
+ [9] git2r_0.33.0      later_1.3.2       jquerylib_0.1.4   scales_1.3.0     
+[13] yaml_2.3.8        fastmap_1.1.1     R6_2.5.1          generics_0.1.3   
+[17] workflowr_1.7.1   knitr_1.45        tibble_3.2.1      munsell_0.5.0    
 [21] rprojroot_2.0.4   bslib_0.6.1       pillar_1.9.0      rlang_1.1.3      
 [25] utf8_1.2.4        cachem_1.0.8      stringi_1.8.3     httpuv_1.6.14    
-[29] xfun_0.41         getPass_0.2-4     fs_1.6.3          sass_0.4.8       
-[33] cli_3.6.2         withr_3.0.0       magrittr_2.0.3    ps_1.7.6         
-[37] grid_4.3.2        digest_0.6.34     processx_3.8.3    rstudioapi_0.15.0
-[41] lifecycle_1.0.4   vctrs_0.6.5       evaluate_0.23     glue_1.7.0       
-[45] whisker_0.4.1     colorspace_2.1-0  fansi_1.0.6       purrr_1.0.2      
-[49] rmarkdown_2.25    httr_1.4.7        tools_4.3.2       pkgconfig_2.0.3  
-[53] htmltools_0.5.7  </code></pre>
+[29] xfun_0.41         fs_1.6.3          sass_0.4.8        cli_3.6.2        
+[33] withr_3.0.0       magrittr_2.0.3    grid_4.3.2        digest_0.6.34    
+[37] rstudioapi_0.15.0 lifecycle_1.0.4   vctrs_0.6.5       evaluate_0.23    
+[41] glue_1.7.0        whisker_0.4.1     colorspace_2.1-0  fansi_1.0.6      
+[45] purrr_1.0.2       rmarkdown_2.25    tools_4.3.2       pkgconfig_2.0.3  
+[49] htmltools_0.5.7  </code></pre>
 </div>
 </div>
 

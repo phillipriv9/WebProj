@@ -72,7 +72,7 @@ summary(anova)
 ```
 
 # Average mean cover comapred across species
-```{r, echo=FALSE, out.width="75%"}
+```{r, echo=FALSE, out.width="75%",out.height = "150%"}
 knitr::include_graphics("assets/SamplePlot1.png", error = FALSE)
 # Create a bar graph with a legend for the abbreviations
 plot1 <- ggplot(mean_cover, aes(x = Species, y = mean_cover, fill = Species)) +
@@ -83,7 +83,9 @@ plot1 <- ggplot(mean_cover, aes(x = Species, y = mean_cover, fill = Species)) +
        y = "Mean Cover",
        fill = "Species") +
   guides(fill = guide_legend(title = "Species", override.aes = list())) +
-  theme(legend.position = "right")  # Set fill colors manually
+  theme(legend.position = "right") +
+  theme_bw(base_size = 14)
+
 
 ```
 
