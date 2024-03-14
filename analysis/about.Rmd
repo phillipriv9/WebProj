@@ -2,9 +2,14 @@
 title: "About"
 output:
   workflowr::wflow_html:
-    toc: false
+    toc: true
+    toc_float: true
 editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+##About Me
+
+My name is Phillip Rivera, and I am a master's student working with Dr. Samantha Chapman. I have a general interest in marine ecology,plant functional anatomy, plant biomechanics, and nutrient partitioning. My research is looking closely at the anatomy of mangrove pneumatophores, and how these structure are affected by nitrogen pollution.
+
+
