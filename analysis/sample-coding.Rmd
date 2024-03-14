@@ -12,7 +12,7 @@ editor_options:
 
 # Introduction
 
-This is a just an example and sample of my work process in R, and how I typically work with data. This is the same process that will be applied to Blue Nitrogen Project (Minus data set generation). 
+This is a just a sample of my work process in R, and how I typically work with data. This is the same process that will be applied to Blue Nitrogen Project (Minus data set generation). 
 
 ```{r, echo=FALSE, results='hide',message=FALSE,warning=FALSE}
 # Load necessary packages
