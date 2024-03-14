@@ -5,9 +5,9 @@ navbar:
   left:
   - text: Home
     href: index.html
-  - text: First Analysis
-    href: first-analysis.html
-  - text: About
+  - text: Sample Coding
+    href: sample-coding.html
+  - text: About Me
     href: about.html
   - text: License
     href: license.html
