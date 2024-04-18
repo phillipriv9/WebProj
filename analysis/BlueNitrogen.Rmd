@@ -1,0 +1,188 @@
+---
+title: "Blue Nitrogen Project"
+author: "Phillip Rivera"
+output:
+  workflowr::wflow_html:
+    toc: true
+    toc_float: true
+editor_options:
+  chunk_output_type: console
+---
+
+# Introduction
+
+The Blue Nitrogen project is related related to a paper being published by my two academic mentors Dr. Adam Langley and Dr. Samantha Chapman. The idea is similar to that of blue carbon in that a large portion of the nitrogen we released into the world ends up being stored in our marine and coastal ecosystems. This project is to introduce the concept into the literature and demonstrate it's establishment across numerous complied datasets. My role in the project was the help with the creation of models, synthesis of the overall datasets, and helping with the logistical sharing of the dataset.
+
+## Synthesis of the dataset
+
+The bulk of this was already done before I was brought into the project my Dr. Adam Langley. I, however, helped clean up some of the newer datasets we received and also helped troubleshoot issue within the code designed to combine all the datasets into one. I have provided various samples of code for different parts of the process.
+
+```{r}
+### The first step was taking raw data provided to us by a collaborator and cleaning up there data and then exporting it. I have the code that we most frequently executed for this step below
+
+## import data from Rovai et al. 2018
+
+#These libraries are used both here and through the rest of the datasynthesis
+library(magrittr)
+library(tidyverse)
+
+
+#We are reading in the data file provided to us
+input_data01 <- read.csv("data/raw_data/acrf.csv")
+
+#Removing empty row
+input_data01 <- input_data01[-c(48, 99), ]
+
+#This is ensuring the Percent Nitrogen column is treated as numerical. This was causing problems in the combine all portion of the synthesis
+input_data01$N_perc <- as.numeric(input_data01$N_perc)
+
+# add information, mainly the name of the source for the dataset and author of the papers initials  
+source_name <- "ruiz-fernadez"
+author_initials <- "rf"
+
+
+
+# Prepping for export
+
+export_data01 <- input_data01 %>% 
+  dplyr::select(study_id, site_id, core_id, Habitat_type, Year_collected, 
+                Latitude, Longitude, U_depth_m, L_depth_m, OC_perc, N_perc, BD_reported_g_cm3,DOI)
+
+
+# exporting out to a csv file
+
+path_out = 'data/refined/'
+
+export_file <- paste(path_out, source_name, ".csv", sep = '') 
+export_df <- export_data01
+
+write.csv(export_df, export_file)
+
+
+#### After this we synthesized a our csv files into two seperate data-files based of parameters related to how they were collected, who collected them, and other associations. The bulk of this code was written by Dr. Adam Langley, with myself cleaning up/ simplyfing certain steps and providing further annotations. 
+
+library(purrr)
+
+# Set the path to the folder containing your CSV files
+folder_path <- "data/CCN/"
+
+# Get a list of all CSV files in the folder
+csv_files <- list.files(path = folder_path, pattern = "\\.csv$", full.names = TRUE)
+
+# Read all CSV files into a list of data frames
+list_of_dfs <- map(csv_files, ~{
+  df <- read.csv(.)
+  columns_to_convert <- c("Latitude", "Longitude", "Plot", "core_id", "fraction_nitrogen", "Habitat_type")
+  for (col in columns_to_convert) {
+    if (col %in% colnames(df)) {
+      df <- mutate(df, !!col := as.character(!!sym(col)))
+    }
+  }
+  return(df)
+})
+
+# Check the structure of each data frame. Used to make that we didn't have any incorrect data types
+walk(list_of_dfs, ~str(.))
+
+# Combine all data frames into one
+combined_data <- bind_rows(list_of_dfs, .id = "file_id")
+
+# Add a new column with the value "CCN" for every row
+combined_data <- mutate(combined_data, Database = "CCN") %>%
+  mutate(study_site_core = paste(study_id, site_id, core_id, sep = "_"))
+
+# Reorganize columns to make "Database" the first column
+combined_data <- select(combined_data, Database, everything())
+
+
+# Select only certain columns
+selected_columns <- c("Database", "study_id", "study_site_core" , "site_id", "file_id", "core_latitude", "core_longitude", "core_id", "fraction_nitrogen", "fraction_total_nitrogen", 
+                      "depth_min","depth_max","dry_bulk_density","core_year","salinity_class", "Habitat_type",
+                      "fraction_carbon","fraction_carbon_measured", "fraction_carbon_modeled", "fraction_organic_carbon" )
+combined_data <- select(combined_data, all_of(selected_columns))
+
+# Rename selected columns
+combined_data <- rename(combined_data,
+                        BD_reported_g_cm3=dry_bulk_density 
+                      )
+
+#convert fractions to percents
+combined_data2 <- combined_data%>% 
+  mutate(OC_perc = as.numeric(fraction_carbon) * 100,
+         OC_perc = ifelse(is.na(OC_perc), as.numeric(fraction_organic_carbon) * 100, OC_perc),
+         OC_perc = ifelse(is.na(OC_perc), as.numeric(fraction_carbon_measured) * 100, OC_perc),
+         N_perc = as.numeric(fraction_nitrogen) * 100,
+         N_perc = ifelse(is.na(N_perc), as.numeric(fraction_total_nitrogen) * 100, N_perc),
+         U_depth_m = as.numeric(depth_min/100),
+         L_depth_m = as.numeric(depth_max/100), 
+         Latitude = core_latitude, 
+         Longitude = core_longitude)
+
+# Specify the folder for saving the combined data
+output_folder <- "data/combined"
+
+# Create the output folder if it doesn't exist
+if (!dir.exists(output_folder)) dir.create(output_folder)
+
+# Write the combined data frame to a new CSV file in the "Combined" folder
+output_file <- file.path(output_folder, "CCN_combined_data.csv")
+write.csv(combined_data2, output_file, row.names = FALSE)
+
+
+#### The final steps was combining all the data from the two seperate databases we made into one large data frame so we could perform our analysis and modelling with ease. Here we had the problem of some datasets treating the N percent value as a character hence the as.factor() command from earlier. This script was largely written by Dr. Adam Langley, with me providing some troubleshooting and annotating.
+
+library(readr)
+df1 <- read.csv("data/combined/Maxwell_combined_data.csv")
+df2 <- read.csv("data/combined/CCN_combined_data.csv")
+
+# make coordinates characters
+df1 <- df1 %>% mutate(Latitude = as.character(Latitude), Longitude = as.character(Longitude))
+df2 <- df2 %>% mutate(Latitude = as.character(Latitude), Longitude = as.character(Longitude))
+df3 <- bind_rows(df1, df2, .id=NULL)
+
+df4 <- df3 %>% 
+  dplyr::select(Database, Source, study_id, study_site_core, site_id, Site, Plot, core_id, Habitat_type, Year_collected, 
+                Latitude, Longitude, U_depth_m, L_depth_m, OC_perc, N_perc, BD_reported_g_cm3, DOI)
+
+# Recategorize groups and create a new variable 'Recategorized_Habitat'
+df4 <- df4 %>%
+  mutate(Habitat = case_when(
+    grepl("saltmarsh", Habitat_type, ignore.case = TRUE) ~ "marsh", 
+    grepl("salt marsh", Habitat_type, ignore.case = TRUE) ~ "marsh",
+    grepl("marsh", Habitat_type, ignore.case = TRUE) ~ "marsh",
+    grepl("mangrove", Habitat_type, ignore.case = TRUE) ~ "mangrove",
+    grepl("seagrass", Habitat_type, ignore.case = TRUE) ~ "seagrass",
+    grepl("mudflat", Habitat_type, ignore.case = TRUE) ~ "mudflat",
+    grepl("tidal flat", Habitat_type, ignore.case = TRUE) ~ "mudflat",
+    grepl("high sabkha", Habitat_type, ignore.case = TRUE) ~ "mudflat",
+    grepl("low sabkha", Habitat_type, ignore.case = TRUE) ~ "mudflat",
+    grepl("microbial mat", Habitat_type, ignore.case = TRUE) ~ "mudflat",
+    grepl("peat", Habitat_type, ignore.case = TRUE) ~ "marsh",
+    TRUE ~ "Other"
+  ))
+
+df5 <- df4 %>%
+  mutate(CN = OC_perc/N_perc, centerdepth = U_depth_m + L_depth_m/2)
+
+# Specify the folder for saving the recategorized data
+output_folder_recategorized <- "data/Combined"
+
+# Create the output folder if it doesn't exist
+if (!dir.exists(output_folder_recategorized)) dir.create(output_folder_recategorized)
+
+# Eliminate rows with NA in 'Source' or 'N_perc'
+df6 <- df5 %>%
+  filter(!is.na(N_perc), !is.na(site_id))
+
+
+# Write the recategorized data frame to a new CSV file in the "Recategorized" folder
+output_file_recategorized <- file.path(output_folder_recategorized, "AllCombined.csv")
+write.csv(df6, output_file_recategorized, row.names = FALSE)
+
+
+
+```
+
+# Creating mixed linear models and graphing them
+
+After we had the full dataset

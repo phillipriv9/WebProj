@@ -10,4 +10,6 @@ editor_options:
 
 Welcome to my research website.
 
-Click on this [link](first-analysis.html) to see my general coding style.
+Click on this [link](sample-coding.html) to see my general coding style.
+
+Click on this [link](Blue-Nitrogen.html) to see my work on the Blue Nitrogen Project
