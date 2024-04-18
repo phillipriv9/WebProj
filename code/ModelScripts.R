@@ -3,6 +3,8 @@ library(tidyverse)
 library(lme4)
 
 
+AllCombined <- read_csv("data/combined/AllCombined.csv")
+
 AllCombined$Latitude <- as.numeric(AllCombined$Latitude)
 
 df1 <- AllCombined
