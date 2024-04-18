@@ -81,8 +81,8 @@ list_of_dfs <- map(csv_files, ~{
   return(df)
 })
 
-# Check the structure of each data frame. Used to make that we didn't have any incorrect data types
-walk(list_of_dfs, ~str(.))
+# Check the structure of each data frame. Used to make that we didn't have any incorrect data types. I am not having it execute here because it would take a ton of space on the page.
+#walk(list_of_dfs, ~str(.)) 
 
 # Combine all data frames into one
 combined_data <- bind_rows(list_of_dfs, .id = "file_id")
