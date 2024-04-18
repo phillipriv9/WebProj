@@ -7,6 +7,8 @@ navbar:
     href: index.html
   - text: Sample Coding
     href: sample-coding.html
+  - text: Blue Nitrogen
+    href: BlueNitrogen.html
   - text: About Me
     href: about.html
   - text: License
