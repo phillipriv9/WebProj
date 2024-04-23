@@ -17,7 +17,8 @@ df3 <- df2 %>%
   filter(Habitat %in% c("marsh", "mangrove"), CN > 5, CN < 100)
 
 df3 <- df3[!is.na(df3$centerdepth), ]
-
+df3 <- df3[!is.na(df3$U_depth_m), ]
+df3 <- df3[!is.na(df3$L_depth_m), ]
 #Could try pivot longer to help automate that process
 
 #plot nested within source
@@ -39,6 +40,10 @@ model.interaction.null
 anova(model.interaction.null, model)
 
 anova(model.centerdepth.null, model)
+
+
+
+### Making a graph of this first model.
 
 
 
