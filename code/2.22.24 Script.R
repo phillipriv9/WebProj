@@ -42,10 +42,10 @@ wflow_open("analysis/index.Rmd")
 wflow_status()
 
 #Publishing new stuff
-wflow_publish(c("analysis/index.Rmd", "analysis/first-analysis.Rmd"),
-              "Update Ananlysis")
+wflow_publish(c("analysis/.Rmd", "analysis/.yml"))
+
 
 #Pushing the files
-wflow_git_push()
+wflow_publish("analysis")
 
 
