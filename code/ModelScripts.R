@@ -44,10 +44,23 @@ anova(model.centerdepth.null, model)
 
 
 ### Making a graph of this first model.
+mid <- mean(df3$centerdepth)
 
 
+graph1 <- ggplot(df3, aes(x = N_perc, y = OC_perc)) +
+  facet_grid(.~Habitat) +
+  geom_point(aes(color = centerdepth)) +
+  geom_smooth(method = lm) +
+  labs(y = "Percent of Organic Carbon", x = "Percent of Nitrogen", ) +
+  theme_bw() +
+  scale_color_gradient(low = 	"#B057BF", high = "#1A1A1A", space = "Lab")
 
 
+Hab_labs <- c("mangrove", "marsh")
+names(Hab_labs) <- c("Mangrove", "Marsh")
 
 
+graph1 <- graph1 + facet_grid(. ~Habitat, labeller = labeller(Habitat = c("mangrove" = "Mangrove", "marsh" ="Marsh")))
+
+graph1
 
