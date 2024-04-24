@@ -236,7 +236,6 @@ anova(model.centerdepth.null, model)
 
 #Graph of the Model
 
-
 ```{r}
 
 graph1 <- ggplot(df3, aes(x = N_perc, y = OC_perc)) +
