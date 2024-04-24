@@ -25,6 +25,7 @@ The bulk of this was already done before I was brought into the project my Dr. A
 #These libraries are used both here and through the rest of the datasynthesis
 library(magrittr)
 library(tidyverse)
+library(ggplot2)
 
 
 #We are reading in the data file provided to us
@@ -233,3 +234,26 @@ anova(model.centerdepth.null, model)
 
 ```
 
+#Graph of the Model
+
+
+```{r}
+
+graph1 <- ggplot(df3, aes(x = N_perc, y = OC_perc)) +
+  facet_grid(.~Habitat) +
+  geom_point(aes(color = centerdepth)) +
+  geom_smooth(method = lm) +
+  labs(y = "Percent of Organic Carbon", x = "Percent of Nitrogen", ) +
+  theme_bw() +
+  scale_color_gradient(low = 	"#B057BF", high = "#1A1A1A", space = "Lab")
+
+
+Hab_labs <- c("mangrove", "marsh")
+names(Hab_labs) <- c("Mangrove", "Marsh")
+
+
+graph1 <- graph1 + facet_grid(. ~Habitat, labeller = labeller(Habitat = c("mangrove" = "Mangrove", "marsh" ="Marsh")))
+
+graph1
+
+```
