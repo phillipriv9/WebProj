@@ -231,7 +231,6 @@ anova(model.interaction.null, model)
 #Testing significance of centerdepth as
 anova(model.centerdepth.null, model)
 
-
 ```
 
 #Graph of the Model
