@@ -44,7 +44,6 @@ anova(model.centerdepth.null, model)
 
 
 ### Making a graph of this first model.
-mid <- mean(df3$centerdepth)
 
 
 graph1 <- ggplot(df3, aes(x = N_perc, y = OC_perc)) +
