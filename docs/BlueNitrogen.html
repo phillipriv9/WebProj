@@ -525,15 +525,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree807c24359148655552a0b5bfecde0fb8d1da0022targetblank807c243a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree1d1b2024568a3fc5ecf4bbc8e114feb5d6ba393dtargetblank1d1b202a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/phillipriv9/WebProj/tree/807c24359148655552a0b5bfecde0fb8d1da0022" target="_blank">807c243</a>
+<a href="https://github.com/phillipriv9/WebProj/tree/1d1b2024568a3fc5ecf4bbc8e114feb5d6ba393d" target="_blank">1d1b202</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree807c24359148655552a0b5bfecde0fb8d1da0022targetblank807c243a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree1d1b2024568a3fc5ecf4bbc8e114feb5d6ba393dtargetblank1d1b202a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -543,7 +543,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/phillipriv9/WebProj/tree/807c24359148655552a0b5bfecde0fb8d1da0022" target="_blank">807c243</a>.
+<a href="https://github.com/phillipriv9/WebProj/tree/1d1b2024568a3fc5ecf4bbc8e114feb5d6ba393d" target="_blank">1d1b202</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -614,6 +614,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/phillipriv9/WebProj/blob/1d1b2024568a3fc5ecf4bbc8e114feb5d6ba393d/analysis/BlueNitrogen.Rmd" target="_blank">1d1b202</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-04-24
+</td>
+<td>
+wflow_publish("analysis/BlueNitrogen.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/phillipriv9/WebProj/f67f9d901792e4fefa47706352121bedf3e3ba3f/docs/BlueNitrogen.html" target="_blank">f67f9d9</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-04-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1040,76 +1074,76 @@ df3 &lt;- df3[!is.na(df3$centerdepth), ]
 
 #plot nested within source
 # variability derives from different experimenters sampling different sites.
-model &lt;- lmer(N_perc ~  OC_perc*Habitat + centerdepth + (1 | study_id) + (1 | core_id), data = df3, REML = FALSE)
+model &lt;- lmer(N_perc ~  OC_perc*Habitat + centerdepth + (1 | study_id/core_id), data = df3, REML = FALSE)
 
 #This null model is looking at the interaction of Oxygen concentration percent with Habitat type.
-model.interaction.null &lt;- lmer(N_perc ~ OC_perc+Habitat + centerdepth + (1 | study_id) + (1 | core_id), data = df3, REML = FALSE)
+model.interaction.null &lt;- lmer(N_perc ~ OC_perc+Habitat + centerdepth + (1 | study_id/core_id), data = df3, REML = FALSE)
 
 #Null model looking at center depth
-model.centerdepth.null &lt;- lmer(N_perc ~ OC_perc*Habitat + (1 | study_id) + (1 | core_id), data=df3, REML = FALSE)
-
-model.centerdepth.null</code></pre>
+model.centerdepth.null &lt;- lmer(N_perc ~ OC_perc*Habitat + (1 | study_id/ core_id), data=df3, REML = FALSE)</code></pre>
+<pre><code>Warning in checkConv(attr(opt, &quot;derivs&quot;), opt$par, ctrl = control$checkConv, :
+Model failed to converge with max|grad| = 0.00261889 (tol = 0.002, component 1)</code></pre>
+<pre class="r"><code>model.centerdepth.null</code></pre>
 <pre><code>Linear mixed model fit by maximum likelihood  [&#39;lmerMod&#39;]
-Formula: N_perc ~ OC_perc * Habitat + (1 | study_id) + (1 | core_id)
+Formula: N_perc ~ OC_perc * Habitat + (1 | study_id/core_id)
    Data: df3
       AIC       BIC    logLik  deviance  df.resid 
--8092.414 -8042.973  4053.207 -8106.414      8623 
+-8089.945 -8040.504  4051.972 -8103.945      8623 
 Random effects:
- Groups   Name        Std.Dev.
- core_id  (Intercept) 0.1121  
- study_id (Intercept) 0.1395  
- Residual             0.1413  
-Number of obs: 8630, groups:  core_id, 900; study_id, 31
+ Groups           Name        Std.Dev.
+ core_id:study_id (Intercept) 0.1094  
+ study_id         (Intercept) 0.1399  
+ Residual                     0.1407  
+Number of obs: 8630, groups:  core_id:study_id, 949; study_id, 31
 Fixed Effects:
          (Intercept)               OC_perc          Habitatmarsh  
-             0.12946               0.04109              -0.05678  
+             0.13073               0.04107              -0.05872  
 OC_perc:Habitatmarsh  
-             0.01839  </code></pre>
+             0.01835  
+optimizer (nloptwrap) convergence code: 0 (OK) ; 0 optimizer warnings; 1 lme4 warnings </code></pre>
 <pre class="r"><code>model</code></pre>
 <pre><code>Linear mixed model fit by maximum likelihood  [&#39;lmerMod&#39;]
-Formula: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id) + (1 |  
-    core_id)
+Formula: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id/core_id)
    Data: df3
       AIC       BIC    logLik  deviance  df.resid 
--8280.823 -8224.319  4148.411 -8296.823      8622 
+-8279.765 -8223.261  4147.882 -8295.765      8622 
 Random effects:
- Groups   Name        Std.Dev.
- core_id  (Intercept) 0.1127  
- study_id (Intercept) 0.1379  
- Residual             0.1396  
-Number of obs: 8630, groups:  core_id, 900; study_id, 31
+ Groups           Name        Std.Dev.
+ core_id:study_id (Intercept) 0.1101  
+ study_id         (Intercept) 0.1383  
+ Residual                     0.1390  
+Number of obs: 8630, groups:  core_id:study_id, 949; study_id, 31
 Fixed Effects:
          (Intercept)               OC_perc          Habitatmarsh  
-             0.16110               0.03960              -0.05784  
+             0.16238               0.03959              -0.05964  
          centerdepth  OC_perc:Habitatmarsh  
-            -0.06086               0.01904  </code></pre>
+            -0.06096               0.01897  </code></pre>
 <pre class="r"><code>model.interaction.null</code></pre>
 <pre><code>Linear mixed model fit by maximum likelihood  [&#39;lmerMod&#39;]
-Formula: N_perc ~ OC_perc + Habitat + centerdepth + (1 | study_id) + (1 |  
-    core_id)
+Formula: N_perc ~ OC_perc + Habitat + centerdepth + (1 | study_id/core_id)
    Data: df3
       AIC       BIC    logLik  deviance  df.resid 
--6817.429 -6767.988  3415.714 -6831.429      8623 
+-6832.330 -6782.889  3423.165 -6846.330      8623 
 Random effects:
- Groups   Name        Std.Dev.
- core_id  (Intercept) 0.1354  
- study_id (Intercept) 0.1380  
- Residual             0.1510  
-Number of obs: 8630, groups:  core_id, 900; study_id, 31
+ Groups           Name        Std.Dev.
+ core_id:study_id (Intercept) 0.1326  
+ study_id         (Intercept) 0.1379  
+ Residual                     0.1501  
+Number of obs: 8630, groups:  core_id:study_id, 949; study_id, 31
 Fixed Effects:
  (Intercept)       OC_perc  Habitatmarsh   centerdepth  
-     0.11515       0.04919       0.02008      -0.04299  </code></pre>
+     0.11614       0.04899       0.02316      -0.04416  </code></pre>
 <pre class="r"><code>#Perfoming likelhood tests to determined the significance of our fixed effects and interactions
 
 #Testing significance of interaction of OC Perc and Habitat
 anova(model.interaction.null, model)</code></pre>
 <pre><code>Data: df3
 Models:
-model.interaction.null: N_perc ~ OC_perc + Habitat + centerdepth + (1 | study_id) + (1 | core_id)
-model: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id) + (1 | core_id)
+model.interaction.null: N_perc ~ OC_perc + Habitat + centerdepth + (1 | study_id/core_id)
+model: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id/core_id)
                        npar     AIC     BIC logLik deviance  Chisq Df
-model.interaction.null    7 -6817.4 -6768.0 3415.7  -6831.4          
-model                     8 -8280.8 -8224.3 4148.4  -8296.8 1465.4  1
+model.interaction.null    7 -6832.3 -6782.9 3423.2  -6846.3          
+model                     8 -8279.8 -8223.3 4147.9  -8295.8 1449.4  1
                        Pr(&gt;Chisq)    
 model.interaction.null               
 model                   &lt; 2.2e-16 ***
@@ -1119,11 +1153,11 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 anova(model.centerdepth.null, model)</code></pre>
 <pre><code>Data: df3
 Models:
-model.centerdepth.null: N_perc ~ OC_perc * Habitat + (1 | study_id) + (1 | core_id)
-model: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id) + (1 | core_id)
+model.centerdepth.null: N_perc ~ OC_perc * Habitat + (1 | study_id/core_id)
+model: N_perc ~ OC_perc * Habitat + centerdepth + (1 | study_id/core_id)
                        npar     AIC     BIC logLik deviance  Chisq Df
-model.centerdepth.null    7 -8092.4 -8043.0 4053.2  -8106.4          
-model                     8 -8280.8 -8224.3 4148.4  -8296.8 190.41  1
+model.centerdepth.null    7 -8089.9 -8040.5 4052.0  -8103.9          
+model                     8 -8279.8 -8223.3 4147.9  -8295.8 191.82  1
                        Pr(&gt;Chisq)    
 model.centerdepth.null               
 model                   &lt; 2.2e-16 ***
