@@ -46,6 +46,6 @@ wflow_publish(c("analysis/.Rmd", "analysis/.yml"))
 
 
 #Pushing the files
-wflow_publish("analysis")
+wflow_publish("analysis/BlueNitrogen.Rmd")
 
 
