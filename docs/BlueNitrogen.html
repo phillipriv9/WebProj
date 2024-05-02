@@ -394,7 +394,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-04-24
+<strong>Last updated:</strong> 2024-05-02
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -525,15 +525,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree503cf3f2726a8297a9b38e81b504004f71e3ea7ftargetblank503cf3fa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree7a7a334c7ea68da4c23db73cb8c803b84adf42e4targetblank7a7a334a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/phillipriv9/WebProj/tree/503cf3f2726a8297a9b38e81b504004f71e3ea7f" target="_blank">503cf3f</a>
+<a href="https://github.com/phillipriv9/WebProj/tree/7a7a334c7ea68da4c23db73cb8c803b84adf42e4" target="_blank">7a7a334</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree503cf3f2726a8297a9b38e81b504004f71e3ea7ftargetblank503cf3fa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree7a7a334c7ea68da4c23db73cb8c803b84adf42e4targetblank7a7a334a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -543,7 +543,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/phillipriv9/WebProj/tree/503cf3f2726a8297a9b38e81b504004f71e3ea7f" target="_blank">503cf3f</a>.
+<a href="https://github.com/phillipriv9/WebProj/tree/7a7a334c7ea68da4c23db73cb8c803b84adf42e4" target="_blank">7a7a334</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -614,6 +614,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/phillipriv9/WebProj/blob/7a7a334c7ea68da4c23db73cb8c803b84adf42e4/analysis/BlueNitrogen.Rmd" target="_blank">7a7a334</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-05-02
+</td>
+<td>
+wflow_publish("analysis/BlueNitrogen.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/phillipriv9/WebProj/8b943681fbe0471bb7466b9029dfa6cd8265f907/docs/BlueNitrogen.html" target="_blank">8b94368</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-04-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -917,20 +951,12 @@ various samples of code for different parts of the process.</p>
 
 #These libraries are used both here and through the rest of the datasynthesis
 library(magrittr)
-library(tidyverse)</code></pre>
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ tidyr::extract()   masks magrittr::extract()
-✖ dplyr::filter()    masks stats::filter()
-✖ dplyr::lag()       masks stats::lag()
-✖ purrr::set_names() masks magrittr::set_names()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code>library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(lme4)
+
 
 
 #We are reading in the data file provided to us
@@ -1037,7 +1063,6 @@ write.csv(combined_data2, output_file, row.names = FALSE)
 
 #### The final steps was combining all the data from the two seperate databases we made into one large data frame so we could perform our analysis and modelling with ease. Here we had the problem of some datasets treating the N percent value as a character hence the as.factor() command from earlier. This script was largely written by Dr. Adam Langley, with me providing some troubleshooting and annotating.
 
-library(readr)
 df1 &lt;- read.csv(&quot;data/combined/Maxwell_combined_data.csv&quot;)
 df2 &lt;- read.csv(&quot;data/combined/CCN_combined_data.csv&quot;)
 
@@ -1091,18 +1116,9 @@ class="section level1">
 <h1>Creating mixed linear models and graphing them</h1>
 <p>After we had the full dataset we began creating models. Below are
 some of the examples of the models made with the project</p>
-<pre class="r"><code>library(dplyr)
-library(tidyverse)
-library(lme4)</code></pre>
-<pre><code>Loading required package: Matrix</code></pre>
-<pre><code>
-Attaching package: &#39;Matrix&#39;</code></pre>
-<pre><code>The following objects are masked from &#39;package:tidyr&#39;:
-
-    expand, pack, unpack</code></pre>
 <pre class="r"><code>AllCombined &lt;- read_csv(&quot;data/combined/AllCombined.csv&quot;)</code></pre>
-<pre><code>Rows: 9253 Columns: 21</code></pre>
-<pre><code>── Column specification ────────────────────────────────────────────────────────
+<pre><code>Rows: 9253 Columns: 21
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
 chr (10): Database, Source, study_id, study_site_core, site_id, Site, core_i...
 dbl (11): Plot, Year_collected, Latitude, Longitude, U_depth_m, L_depth_m, O...
