@@ -295,7 +295,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -306,8 +306,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -320,9 +320,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>WebProj/</code> <span
@@ -345,36 +345,33 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtreeb8225d3438a89b6ccf2be068b64fed1e2daa025dtargetblankb8225d3a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree6040365e409a8e3a1fc5edbdd0fa221915a0b0a5targetblank6040365a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/phillipriv9/WebProj/tree/b8225d3438a89b6ccf2be068b64fed1e2daa025d" target="_blank">b8225d3</a>
+<a href="https://github.com/phillipriv9/WebProj/tree/6040365e409a8e3a1fc5edbdd0fa221915a0b0a5" target="_blank">6040365</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtreeb8225d3438a89b6ccf2be068b64fed1e2daa025dtargetblankb8225d3a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphillipriv9WebProjtree6040365e409a8e3a1fc5edbdd0fa221915a0b0a5targetblank6040365a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -384,7 +381,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/phillipriv9/WebProj/tree/b8225d3438a89b6ccf2be068b64fed1e2daa025d" target="_blank">b8225d3</a>.
+<a href="https://github.com/phillipriv9/WebProj/tree/6040365e409a8e3a1fc5edbdd0fa221915a0b0a5" target="_blank">6040365</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -412,8 +409,8 @@ Untracked files:
     Untracked:  Checking.csv
 
 Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Deleted:    assets/Headshot.HEIC
+    Modified:   code/2.22.24 Script.R
+    Deleted:    code/Website Commands.R
 
 </code></pre>
 <p>
@@ -458,6 +455,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/phillipriv9/WebProj/blob/6040365e409a8e3a1fc5edbdd0fa221915a0b0a5/analysis/index.Rmd" target="_blank">6040365</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-05-05
+</td>
+<td>
+wflow_publish(c("analysis/<em>.Rmd", "analysis/</em>.yml"))
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/phillipriv9/WebProj/blob/2887239cbef45cb3979e061ce9736988c1acdc99/analysis/index.Rmd" target="_blank">2887239</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-05-05
+</td>
+<td>
+Stuff
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/phillipriv9/WebProj/2887239cbef45cb3979e061ce9736988c1acdc99/docs/index.html" target="_blank">2887239</a>
+</td>
+<td>
+phillipriv9
+</td>
+<td>
+2024-05-05
+</td>
+<td>
+Stuff
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -722,7 +770,7 @@ Start workflowr project.
 </div>
 <p>My name is Phillip Rivera and I am biologist who specializes in
 coastal wetland ecosystems.</p>
-<p><img src="docs/assets/Headshot.png" /></p>
+<p><img src="assets/Headshot.png" /></p>
 <p>Click on this <a href="sample-coding.html">link</a> to see my general
 coding style.</p>
 <p>Click on this <a href="BlueNitrogen.html">link</a> to see my work on
