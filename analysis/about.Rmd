@@ -10,6 +10,8 @@ editor_options:
 
 ## About Me
 
-My name is Phillip Rivera, and I am a master's student working with Dr. Samantha Chapman. I have a general interest in marine ecology,plant functional anatomy, plant biomechanics, and nutrient partitioning. My research is looking closely at the anatomy of mangrove pneumatophores, and how these structure are affected by nitrogen pollution.
+My name is Phillip Rivera, and I am currently master's student working with Dr. Samantha Chapman adn Dr. Adam Langley at Villanova University. I previously worked with Dr. Edward Profitt and Dr. Donna Devlin at Texas A&M Corpus Christi, where I characterized the recovery of salt marhs and mangrove forest in the wake of winter storm UriI for my senior thesis research.  I have a general interest in marine ecology, plant functional anatomy, plant biomechanics, and nutrient partitioning. My research is looking closely at the anatomy of mangrove pneumatophores, and how these structure are affected by nitrogen pollution.
 
+![The Wetfeet Project]()
 
+![](assets/MarshPicture.png)
