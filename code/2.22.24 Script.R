@@ -42,7 +42,7 @@ wflow_open("analysis/index.Rmd")
 wflow_status()
 
 #Publishing new stuff
-wflow_publish(c("analysis/.Rmd", "analysis/.yml"))
+wflow_publish(c("analysis/*.Rmd", "analysis/*.yml"))
 
 
 #Pushing the files
