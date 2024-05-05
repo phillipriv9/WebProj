@@ -10,7 +10,7 @@ editor_options:
 
 My name is Phillip Rivera and I am biologist who specializes in coastal wetland ecosystems.
 
-![](docs/assets/Headshot.png)
+![](assets/Headshot.png)
 
 
 
