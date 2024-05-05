@@ -8,8 +8,14 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+My name is Phillip Rivera and I am biologist who specializes in coastal wetland ecosystems.
+
+![](docs/assets/Headshot.png)
+
+
 
 Click on this [link](sample-coding.html) to see my general coding style.
 
 Click on this [link](BlueNitrogen.html) to see my work on the Blue Nitrogen Project
+
+Click on this [link](about.html) to learn more about me
